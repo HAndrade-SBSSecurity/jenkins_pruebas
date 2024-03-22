@@ -14,13 +14,14 @@ def update_list(lista):
 
 lista = []  # Inicializar lista vacía
 while True:
+    print(f"lista comienzo while: {lista}")
     lista = update_list(lista)  # Actualizar la lista
     subprocess.run(["git", "add", "do.py"])  # Agregar el archivo do.py al área de preparación
     subprocess.run(["git", "commit", "-m", "Actualización lista"])  # Hacer commit
     subprocess.run(["git", "pull"])  # Realizar un pull en el repositorio
     subprocess.run(["git", "push"])  # Realizar el push al repositorio
     print(f"git lista: {lista}")
-    time.sleep(20)  # Esperar 1 minuto
+    time.sleep(10)  # Esperar 1 minuto
     """if len(lista) % 3 == 0:  # Cada 3 minutos
         subprocess.run(["git", "pull"])  # Realizar un pull en el repositorio
         subprocess.run(["git", "add", "."])  # Agregar todos los cambios
