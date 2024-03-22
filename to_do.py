@@ -36,6 +36,7 @@ def export_list(lista):
     # Por ejemplo, imprimir la lista
     with open("lista.txt", "r") as file:
         lista = file.read().splitlines()
+    print(lista)
 
 if __name__ == "__main__":
     # Obtener la lista pasada como argumento desde el script principal
