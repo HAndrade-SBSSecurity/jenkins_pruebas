@@ -6,7 +6,7 @@ import os
 def update_list(lista):
     lista.append(len(lista))  # Agregar un elemento a la lista
     print(lista)
-    return lista
+    return str(lista)
 
 # Verificar si la carpeta "do" ya existe
 """if not os.path.exists("do"):
@@ -16,6 +16,10 @@ lista = []  # Inicializar lista vacía
 while True:
     print(f"lista comienzo while: {lista}")
     lista = update_list(lista)  # Actualizar la lista
+
+    with open("lista.txt", "w") as file:
+        file.write("\n".join(lista))  # Escribir la lista en un archivo
+
     subprocess.run(["git", "add", "."])  # Agregar el archivo do.py al área de preparación
     subprocess.run(["git", "commit", "-m", "Actualización lista"])  # Hacer commit
     subprocess.run(["git", "pull"])  # Realizar un pull en el repositorio

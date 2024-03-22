@@ -34,7 +34,8 @@ import sys
 def export_list(lista):
     # Puedes realizar cualquier operación que necesites con la lista aquí
     # Por ejemplo, imprimir la lista
-    print("Lista recibida:", lista)
+    with open("lista.txt", "r") as file:
+        lista = file.read().splitlines()
 
 if __name__ == "__main__":
     # Obtener la lista pasada como argumento desde el script principal
