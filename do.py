@@ -19,7 +19,7 @@ while True:
     subprocess.run(["git", "commit", "-m", "Actualización lista"])  # Hacer commit
     subprocess.run(["git", "pull"])  # Realizar un pull en el repositorio
     subprocess.run(["git", "push"])  # Realizar el push al repositorio
-    print("git lista:" + lista + "lista en git")
+    print(f"git lista: {lista}")
     time.sleep(20)  # Esperar 1 minuto
     """if len(lista) % 3 == 0:  # Cada 3 minutos
         subprocess.run(["git", "pull"])  # Realizar un pull en el repositorio
