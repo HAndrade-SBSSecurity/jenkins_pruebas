@@ -6,8 +6,9 @@ pipeline {
             steps {
                 script {
                     while (true) {
+                        sleep time: 20, unit: 'SECONDS' // Espera 3 minutos
                         sh 'python3 do.py' // o viene un archivo python?
-                        sleep time: 180, unit: 'SECONDS' // Espera 3 minutos
+                        
                     }
                 }
             }
@@ -17,8 +18,9 @@ pipeline {
             steps {
                 script {
                     while (true) {
+                        sleep time: 51, unit: 'SECONDS' // Espera 5 minutos
                         sh 'python3 to_do.py' // o viene un archivo python?
-                        sleep time: 300, unit: 'SECONDS' // Espera 5 minutos
+                        
                     }
                 }
             }
