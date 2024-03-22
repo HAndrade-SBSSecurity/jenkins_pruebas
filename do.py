@@ -18,7 +18,7 @@ while True:
     lista = update_list(lista)  # Actualizar la lista
 
     with open("lista.txt", "w") as file:
-        file.write(",".join(map(str, lista)))  # Escribir la lista en un archivo
+        file.write("\n".join(map(str, lista)))  # Escribir la lista en un archivo
             
     subprocess.run(["git", "add", "."])  # Agregar el archivo do.py al área de preparación
     subprocess.run(["git", "commit", "-m", "Actualización lista"])  # Hacer commit
