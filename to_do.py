@@ -30,6 +30,7 @@ def copy_repo_contents(source_url, dest_url):
 copy_repo_contents(repo_do_url, repo_to_do_url)"""
 
 import sys
+import time
 
 def export_list(lista):
     # Puedes realizar cualquier operación que necesites con la lista aquí
@@ -43,4 +44,6 @@ if __name__ == "__main__":
     lista = sys.argv[1:]
 
     # Llamar a la función para exportar la lista
-    export_list(lista)
+    while(True):
+        time.sleep(21)
+        export_list(lista)

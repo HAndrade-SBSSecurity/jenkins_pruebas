@@ -26,5 +26,5 @@ while True:
     subprocess.run(["git", "push"])  # Realizar el push al repositorio
     print(f"git lista: {lista}")
     
-    time.sleep(10)  # Esperar 1 minuto
+    time.sleep(10)  # Esperar 10 seg
     subprocess.run(["python", "to_do.py"])
