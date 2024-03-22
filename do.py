@@ -16,7 +16,7 @@ while True:
     subprocess.run(["git", "add", "do.py"])  # Agregar todos los cambios    
     subprocess.run(["git", "commit", "-m", "Actualización lista"])  # Hacer commit
     subprocess.run(["git", "pull"])  # Realizar un pull en el repositorio
-
+    subprocess.run(["git", "push"])
     time.sleep(30)  # Esperar 1 minuto
     """if len(lista) % 3 == 0:  # Cada 3 minutos
         subprocess.run(["git", "pull"])  # Realizar un pull en el repositorio
