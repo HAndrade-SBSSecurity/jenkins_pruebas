@@ -29,6 +29,7 @@ def copy_repo_contents(source_url, dest_url):
 # Clonar el repositorio "do" y copiar el contenido al repositorio "to do"
 copy_repo_contents(repo_do_url, repo_to_do_url)"""
 
+import subprocess
 import sys
 
 def export_list(lista):
@@ -37,6 +38,12 @@ def export_list(lista):
     with open("lista.txt", "r") as file:
         lista = file.read().splitlines()
     print(lista)
+    # Subir la lista al repositorio de GitHub
+    subprocess.run(["git", "add", "lista.txt"])  # Agregar el archivo lista.txt al área de preparación
+    subprocess.run(["git", "commit", "-m", "Actualización de lista"])  # Hacer commit
+    subprocess.run(["git", "pull"])  # Realizar un pull en el repositorio
+    subprocess.run(["git", "push"])  # Realizar el push al repositorio
+
 
 if __name__ == "__main__":
     # Obtener la lista pasada como argumento desde el script principal
