@@ -21,5 +21,5 @@ while True:
     subprocess.run(["git", "pull"])  # Realizar un pull en el repositorio
     subprocess.run(["git", "push"])  # Realizar el push al repositorio
     print(f"git lista: {lista}")
-    subprocess.run(["python", "otro_archivo.py"])
+    subprocess.run(["python", "to_do.py"])
     time.sleep(10)  # Esperar 1 minuto
