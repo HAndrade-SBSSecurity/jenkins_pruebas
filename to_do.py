@@ -40,3 +40,5 @@ if __name__ == "__main__":
     # Obtener la lista pasada como argumento desde el script principal
     lista = sys.argv[1:]
 
+    # Llamar a la función para exportar la lista
+    export_list(lista)
