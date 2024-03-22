@@ -1,4 +1,4 @@
-import requests
+"""import requests
 
 # Variables con los datos de los repositorios
 repo_do_url = "https://api.github.com/repos/HAndrade-SBSSecurity/do/contents"
@@ -27,4 +27,16 @@ def copy_repo_contents(source_url, dest_url):
             copy_repo_contents(file["url"], dest_url + "/" + file["name"])
 
 # Clonar el repositorio "do" y copiar el contenido al repositorio "to do"
-copy_repo_contents(repo_do_url, repo_to_do_url)
+copy_repo_contents(repo_do_url, repo_to_do_url)"""
+
+import sys
+
+def export_list(lista):
+    # Puedes realizar cualquier operación que necesites con la lista aquí
+    # Por ejemplo, imprimir la lista
+    print("Lista recibida:", lista)
+
+if __name__ == "__main__":
+    # Obtener la lista pasada como argumento desde el script principal
+    lista = sys.argv[1:]
+
