@@ -27,4 +27,4 @@ while True:
     print(f"git lista: {lista}")
     
     time.sleep(10)  # Esperar 10 seg
-    subprocess.run(["python", "to_do.py"])
+    #subprocess.run(["python", "to_do.py"])
