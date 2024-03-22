@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone Repo "do"') {
+            steps {
+                script {
+                    while (true) {
+                        sh 'python3 do.py' // o viene un archivo python?
+                        sleep time: 180, unit: 'SECONDS' // Espera 3 minutos
+                    }
+                }
+            }
+        }
+
+        stage('Clone Repo "to do"') {
+            steps {
+                script {
+                    while (true) {
+                        sh 'python3 to_do.py' // o viene un archivo python?
+                        sleep time: 300, unit: 'SECONDS' // Espera 5 minutos
+                    }
+                }
+            }
+        }
+    }
+}
