@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         COUNTER = 0 // Inicializa el contador en cero
+        sleepTime = '30'
     }
     stages {
         stage('Increment Counter') {
@@ -10,7 +11,8 @@ pipeline {
                     while (true) {
                         COUNTER++
                         echo "El contador es: ${COUNTER}"
-                        sleep time: 30, unit: 'SECONDS' // Espera 30 segundos
+                        sleep time: sleepTime, unit: 'SECONDS' // Espera 30 segundos
+                        sleepTime += sleepTime 
                     }
                 }
             }
