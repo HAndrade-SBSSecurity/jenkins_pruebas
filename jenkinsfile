@@ -7,8 +7,11 @@ pipeline {
         stage('Increment Counter') {
             steps {
                 script {
-                    COUNTER++
-                    echo "El contador es: ${COUNTER}"
+                    while (true) {
+                        COUNTER++
+                        echo "El contador es: ${COUNTER}"
+                        sleep time: 30, unit: 'SECONDS' // Espera 30 segundos
+                    }
                 }
             }
         }
