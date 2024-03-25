@@ -1,27 +1,21 @@
 pipeline {
     agent any
-
+    environment {
+        COUNTER = 0 // Inicializa el contador en cero
+    }
     stages {
-        stage('Clone Repo "do"') {
+        stage('Increment Counter') {
             steps {
                 script {
-                    while (true) {
-                        sleep time: 20, unit: 'SECONDS' // Espera 3 minutos
-                        sh 'python3 do.py' // o viene un archivo python?
-                        
-                    }
+                    COUNTER++
+                    echo "El contador es: ${COUNTER}"
                 }
             }
         }
-
-        stage('Clone Repo "to do"') {
+        stage('Utilizar el Contador') {
             steps {
                 script {
-                    while (true) {
-                        sleep time: 51, unit: 'SECONDS' // Espera 5 minutos
-                        sh 'python3 to_do.py' // o viene un archivo python?
-                        
-                    }
+                    echo "Utilizando el contador en otra parte del pipeline: ${COUNTER}"
                 }
             }
         }
