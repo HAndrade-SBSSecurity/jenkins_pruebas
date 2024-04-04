@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        label 'WindowsAgent'
+    }
     stages {
         stage('Clone Repo "do"') {
             when {
