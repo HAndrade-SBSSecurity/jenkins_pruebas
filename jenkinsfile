@@ -11,7 +11,7 @@ pipeline {
             }
             steps {
                 script {
-                    bat 'python3 do.py'
+                    bat 'python do.py'
                 }
             }
         }
@@ -23,7 +23,7 @@ pipeline {
             }
             steps {
                 script {
-                    bat 'python3 to_do.py'
+                    bat 'python to_do.py'
                 }
             }
         }
