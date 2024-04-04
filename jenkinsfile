@@ -1,26 +1,27 @@
 pipeline {
     agent any
-    environment {
-        COUNTER = 0 // Inicializa el contador en cero
-    }
     stages {
-        stage('Increment Counter') {
+        stage('Clone Repo "do"') {
+            when {
+                expression {
+                    return new Date().format("HH").toInteger() >= 15 // 15 representa las 3pm en formato de 24 horas
+                }
+            }
             steps {
                 script {
-                    def sleepTime = 30 // Inicializa sleepTime en 30 segundos
-                    while (true) {
-                        COUNTER++
-                        echo "El contador es: ${COUNTER}"
-                        sleep time: sleepTime, unit: 'SECONDS' // Espera 30 segundos
-                        sleepTime = sleepTime + 30
-                    }
+                    sh 'python3 do.py'
                 }
             }
         }
-        stage('Utilizar el Contador') {
+        stage('Clone Repo "to do"') {
+            when {
+                expression {
+                    return new Date().format("HH").toInteger() < 15
+                }
+            }
             steps {
                 script {
-                    echo "Utilizando el contador en otra parte del pipeline: ${COUNTER}"
+                    sh 'python3 to_do.py'
                 }
             }
         }
