@@ -18,7 +18,7 @@ pipeline {
         stage('Clone Repo "to do"') {
             when {
                 expression {
-                    return new Date().format("HH").toInteger() < 15
+                    return new Date().format("HH").toInteger() = 15
                 }
             }
             steps {
