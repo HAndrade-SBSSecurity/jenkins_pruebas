@@ -25,12 +25,13 @@ pipeline {
         stage('Son las 14 hrs "to do"') {
             when {
                 expression {
-                    return new Date().format("HH").toInteger() == 14 
+                    return new Date().format("HH").toInteger() <= 14 
                 }
             }
             steps {
                 script {
                     bat 'python to_do.py'
+                    env.EXECUTED_THIS_HOUR = true
                 }
             }
         }
