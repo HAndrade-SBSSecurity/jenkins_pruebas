@@ -5,16 +5,20 @@ pipeline {
     triggers {
         cron('*/20 * * * *') // Se ejecuta cada 20 minutos
     }
+    environment {
+        EXECUTED_THIS_HOUR = false
+    }
     stages {
         stage('Son las 15 hrs "do"') {
             when {
                 expression {
-                    return new Date().format("HH").toInteger() == 15 && new Date().format("mm").toInteger() < 20
+                    return new Date().format("HH").toInteger() == 15 && !env.EXECUTED_THIS_HOUR
                 }
             }
             steps {
                 script {
                     bat 'python do.py'
+                    env.EXECUTED_THIS_HOUR = true
                 }
             }
         }
