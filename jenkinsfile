@@ -12,26 +12,33 @@ pipeline {
         stage('Son las 15 hrs "do"') {
             when {
                 expression {
-                    return new Date().format("HH").toInteger() >= 15 && env.EXECUTED_THIS_HOUR
+                    def currentHour = new Date().format("HH").toInteger()
+                    def currentMinute = new Date().format("mm").toInteger()
+                    def executedThisHour = env.EXECUTED_THIS_HOUR ?: false
+
+                    if (currentHour == 15 && !executedThisHour) {
+                        env.EXECUTED_THIS_HOUR = true
+                        return true
+                    } else {
+                        return false
+                    }
                 }
             }
             steps {
                 script {
                     bat 'python do.py'
-                    env.EXECUTED_THIS_HOUR = true
                 }
             }
         }
         stage('Son las 14 hrs "to do"') {
             when {
                 expression {
-                    return new Date().format("HH").toInteger() <= 14 
+                    return new Date().format("HH").toInteger() == 14 && new Date().format("mm").toInteger() < 20
                 }
             }
             steps {
                 script {
                     bat 'python to_do.py'
-                    env.EXECUTED_THIS_HOUR = true
                 }
             }
         }
