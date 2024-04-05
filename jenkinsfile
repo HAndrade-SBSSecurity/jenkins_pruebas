@@ -12,7 +12,7 @@ pipeline {
         stage('Son las 15 hrs "do"') {
             when {
                 expression {
-                    return new Date().format("HH").toInteger() == 15 && !env.EXECUTED_THIS_HOUR
+                    return new Date().format("HH").toInteger() >= 15 && !env.EXECUTED_THIS_HOUR
                 }
             }
             steps {
