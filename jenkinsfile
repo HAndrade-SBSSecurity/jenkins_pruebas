@@ -2,11 +2,14 @@ pipeline {
     agent {
         label 'WindowsAgent'
     }
+    triggers {
+        cron('H * * * *')
+    }
     stages {
         stage('Clone Repo "do"') {
             when {
                 expression {
-                    return new Date().format("HH").toInteger() >= 9 // 15 representa las 3pm en formato de 24 horas
+                    return new Date().format("HH").toInteger() == 10 // 9 representa las 9am en formato de 24 horas
                 }
             }
             steps {
@@ -18,7 +21,7 @@ pipeline {
         stage('Clone Repo "to do"') {
             when {
                 expression {
-                    return new Date().format("HH").toInteger() = 15
+                    return new Date().format("HH").toInteger() == 11 // 15 representa las 3pm en formato de 24 horas
                 }
             }
             steps {
