@@ -3,7 +3,7 @@ pipeline {
         label 'WindowsAgent'
     }
     triggers {
-        cron('*/1 * * * *') // Se ejecuta cada 20 minutos
+        cron('*/2 * * * *') // Se ejecuta cada 20 minutos
     }
     environment {
         EXECUTED_THIS_HOUR = false
