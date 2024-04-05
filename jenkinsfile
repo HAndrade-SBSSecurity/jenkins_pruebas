@@ -3,7 +3,7 @@ pipeline {
         label 'WindowsAgent'
     }
     triggers {
-        cron('H * * * *')
+        cron('* * * * *')
     }
     stages {
         stage('Son las 12 hrs "do"') {
