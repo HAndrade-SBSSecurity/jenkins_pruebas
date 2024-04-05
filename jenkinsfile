@@ -3,30 +3,27 @@ pipeline {
         label 'WindowsAgent'
     }
     triggers {
-        cron('*/2 * * * *') // Se ejecuta cada 20 minutos
+        cron('*/1 * * * *') // Se ejecuta cada 20 minutos
     }
     environment {
         EXECUTED_THIS_HOUR = false
     }
     stages {
         stage('Son las 15 hrs "do"') {
+            steps {
+                script {
+                    echo "El valor de EXECUTED_THIS_HOUR es: ${env.EXECUTED_THIS_HOUR}"
+                }
+            }
             when {
                 expression {
-                    def currentHour = new Date().format("HH").toInteger()
-                    def currentMinute = new Date().format("mm").toInteger()
-                    def executedThisHour = env.EXECUTED_THIS_HOUR ?: false
-
-                    if (currentHour == 15 && !executedThisHour) {
-                        env.EXECUTED_THIS_HOUR = true
-                        return true
-                    } else {
-                        return false
-                    }
+                    return new Date().format("HH").toInteger() == 15 && new Date().format("mm").toInteger() < 20 && !env.EXECUTED_THIS_HOUR
                 }
             }
             steps {
                 script {
                     bat 'python do.py'
+                    env.EXECUTED_THIS_HOUR = true
                 }
             }
         }
