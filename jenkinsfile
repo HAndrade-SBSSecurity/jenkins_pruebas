@@ -6,7 +6,7 @@ pipeline {
         stage('Clone Repo "do"') {
             when {
                 expression {
-                    return new Date().format("HH").toInteger() >= 15 // 15 representa las 3pm en formato de 24 horas
+                    return new Date().format("HH").toInteger() >= 9 // 15 representa las 3pm en formato de 24 horas
                 }
             }
             steps {
