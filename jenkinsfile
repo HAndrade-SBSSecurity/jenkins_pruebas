@@ -3,13 +3,13 @@ pipeline {
         label 'WindowsAgent'
     }
     triggers {
-        cron('* * * * *')
+        cron('31 * * * *') // Se ejecuta cada hora en el minuto 27
     }
     stages {
         stage('Son las 12 hrs "do"') {
             when {
                 expression {
-                    return new Date().format("HH").toInteger() == 10 // 9 representa las 9am en formato de 24 horas
+                    return new Date().format("HH").toInteger() >= 12 // Se ejecuta a las 12:00 horas
                 }
             }
             steps {
@@ -21,7 +21,7 @@ pipeline {
         stage('Son las 11 hrs "to do"') {
             when {
                 expression {
-                    return new Date().format("HH").toInteger() == 11 // 15 representa las 3pm en formato de 24 horas
+                    return new Date().format("HH").toInteger() <= 11 // Se ejecuta a las 11:00 horas
                 }
             }
             steps {
